@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/background_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_area_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LAHAN 1"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="bold"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/detail_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="1dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Detail Lahan"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="No Sertifikat"
+                android:textStyle="bold"
+                android:textColor="#000" />
+            <TextView
+                android:layout_weight="4"
+                android:text="Luas Lahan"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="3"
+                android:id="@+id/sertif_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="740/199/2008/IV/2019"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_area_measure"
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="1600 m2"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:fontFamily="@font/roboto_bold"
+               android:textColor="#000"
+               android:text="Jumlah Pohon yang ditebang :"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+           <TextView
+               android:id="@+id/jumlah_pohon"
+               android:text="0"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+       </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

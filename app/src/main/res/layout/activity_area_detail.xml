@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.AreaDetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        app:titleTextColor="@color/white"
+        app:title="Detail Area"
+        app:subtitleTextColor="@color/colorWhite"
+        android:background="@color/colorGreen"
+        android:id="@+id/tb_detail_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_sertif"
+                    android:src="@drawable/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:text="Foto Sertifikat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_sketsa"
+                    android:src="@drawable/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:text="Foto Sketsa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

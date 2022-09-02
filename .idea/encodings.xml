@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/interactor/AssignmentInteractor.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/AreaDao.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/AreaRepository.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/AssignmentDao.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/AssignmentRepository.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/BuktiSerahTerimaDao.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/BuktiSerahTerimaRepository.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/Database.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/Entity.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/HttpApi.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/SerahTerimaDao.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/local/SerahTerimaRepository.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/model" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/remote/MemberService.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/domain/remote/UserService.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/util" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/sobi/replantation/widget" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/LoginActivity.kt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/avatar.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/back_down_dialog.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_add_tree.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_blue.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_green.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_nonaktif.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_photo.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_red.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_search.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_spinner.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_white.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/background_yellow.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/build.gradle" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_add_white.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back_black.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_back_white.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_finish_task.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_refresh_white_24dp.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/list_area_background.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/list_tree_background.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/login_background.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/logo_sobi.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/logosobi.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/submit_login.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/user_position_point.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/font" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/alert_isian_serah_terima.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/list_area.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/list_serah_terima.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/task_list_row.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/xml" charset="ISO-8859-1" />
+  </component>
+</project>

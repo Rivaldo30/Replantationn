@@ -1,0 +1,286 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 5,
+    "identityHash": "fe50520b4f3b9fb06c5e9df30c726b45",
+    "entities": [
+      {
+        "tableName": "assignments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER NOT NULL, `member_id` INTEGER NOT NULL, `koperasi_id` INTEGER NOT NULL, `name` TEXT NOT NULL, `member_no` TEXT NOT NULL, `photo_url` TEXT, `id_photo_url` TEXT, `statement_photo_url` TEXT, `membership_photo_url` TEXT, `area_count` INTEGER NOT NULL, `total_bibit` INTEGER, `finish_serah_terima` INTEGER NOT NULL, PRIMARY KEY(`member_id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberId",
+            "columnName": "member_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "koperasiId",
+            "columnName": "koperasi_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberNo",
+            "columnName": "member_no",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoUrl",
+            "columnName": "photo_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idPhotoUrl",
+            "columnName": "id_photo_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "statementPhotoUrl",
+            "columnName": "statement_photo_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "membershipPhotoUrl",
+            "columnName": "membership_photo_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "areaCount",
+            "columnName": "area_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bibitCount",
+            "columnName": "total_bibit",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "finishSerahTerima",
+            "columnName": "finish_serah_terima",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "member_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "areas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER NOT NULL, `member_id` INTEGER NOT NULL, `area_name` TEXT NOT NULL, `certificate_number` TEXT NOT NULL, `koperasi_id` INTEGER, `area_measure` TEXT, `jumlah_tebang` TEXT, `foto_sertifikat` TEXT, `foto_sketsa` TEXT, `tree` TEXT, PRIMARY KEY(`_id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberId",
+            "columnName": "member_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "areaName",
+            "columnName": "area_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "certificateNumber",
+            "columnName": "certificate_number",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "koperasiId",
+            "columnName": "koperasi_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "areaMeasure",
+            "columnName": "area_measure",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "jumlahTebang",
+            "columnName": "jumlah_tebang",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photoSertifUrl",
+            "columnName": "foto_sertifikat",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photoSketsaUrl",
+            "columnName": "foto_sketsa",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tree",
+            "columnName": "tree",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "serah_terima",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `access_id` INTEGER NOT NULL, `member_id` INTEGER NOT NULL, `species_id` INTEGER NOT NULL, `jumlah_bibit` INTEGER NOT NULL, `keterangan` TEXT, `created_on` TEXT, `status` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accessId",
+            "columnName": "access_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberId",
+            "columnName": "member_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speciesId",
+            "columnName": "species_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "jumlahBibit",
+            "columnName": "jumlah_bibit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "keterangan",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdOn",
+            "columnName": "created_on",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "bukti_serah_terima",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `access_id` INTEGER NOT NULL, `member_id` INTEGER NOT NULL, `photoPath` TEXT NOT NULL, `created_on` TEXT, `status` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accessId",
+            "columnName": "access_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "memberId",
+            "columnName": "member_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoPath",
+            "columnName": "photoPath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdOn",
+            "columnName": "created_on",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fe50520b4f3b9fb06c5e9df30c726b45')"
+    ]
+  }
+}

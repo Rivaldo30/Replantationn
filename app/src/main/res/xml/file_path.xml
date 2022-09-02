@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="storage"
+        path="."/>
+    <external-path
+        name="Eksport KML"
+        path="Eksport KML"/>
+    <root-path name="storage" path="/storage/"></root-path>
+</paths>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_detail_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:title="Asnan"
+        app:titleTextColor="#000" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_member"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/avatar"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/tv_name_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Asnan"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_number_member"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="S-0W0-E0ERIEI"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_detail_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Detail Anggota"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+
+        android:background="@drawable/list_area_background"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Lahan"
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=":"
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_count_areas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="1"
+                        android:textColor="#fff" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Penerimaan Bibit"
+                            android:textColor="#fff"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text=":"
+                            android:textColor="#fff"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_count_terima"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="12"
+                            android:textColor="#fff" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="/"
+                            android:textColor="#fff" />
+
+                        <TextView
+                            android:id="@+id/tv_count_bibit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="12"
+                            android:textColor="#fff" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:textSize="14sp"
+                        android:id="@+id/to_detail_bibit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Detail Bibit"
+                        android:textColor="@color/colorYellow" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_areas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/to_detail_bibit"
+                        android:layout_marginTop="13dp"
+                        tools:listitem="@layout/list_area" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorDon">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_serah_terima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorGreen"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/ic_add_white"
+                app:fabSize="normal" />
+
+            <Button
+                android:id="@+id/finish_serah_terima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/ambil_foto"
+                android:background="@drawable/background_yellow"
+                android:padding="10dp"
+                android:text="Selesaikan\nSerah Terima"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/ambil_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@id/add_serah_terima"
+                android:background="@drawable/background_red"
+                android:padding="10dp"
+                android:text="Input\nDokumentasi"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

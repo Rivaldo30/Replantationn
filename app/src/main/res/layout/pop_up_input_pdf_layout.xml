@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="10dp">
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/title_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Upload Dokumen Serah Terima"
+        android:textAlignment="center"
+        android:textColor="@color/colorGreen"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/isian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_alert"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+<TextView
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:background="@drawable/background_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"/>
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/background_nonaktif"
+            android:layout_weight="4"
+            android:text="Cari"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/isian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_red"
+            android:text="Tidak"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+        <Button
+
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:background="@drawable/background_yellow"
+            android:text="Ya"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
