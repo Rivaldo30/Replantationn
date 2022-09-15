@@ -48,15 +48,21 @@ class TaskListAdapter(val context: Context) :
                     (context as TaskListActivity).goToDetailMember(this.memberId, this.memberName)
                 }
                 binding.detailTaskUpload.setOnClickListener {
-                    (context as TaskListActivity).popUpPdf()
+                    binding.layout.visibility = View.GONE
                 }
 
                 if (this.totalTerima == 0) {
                     binding.detailTaskBtn.setBackgroundResource(R.drawable.background_yellow)
                     binding.detailTaskBtn.text = "Mulai"
+                    binding.detailTaskUpload.visibility = View.GONE
+                }else if (this.finishedSerahTerima == 1) {
+                    binding.detailTaskBtn.setBackgroundResource(R.drawable.background_red)
+                    binding.detailTaskBtn.text = "Ubah"
+                    binding.detailTaskUpload.visibility = View.VISIBLE
                 } else {
                     binding.detailTaskBtn.setBackgroundResource(R.drawable.background_green)
                     binding.detailTaskBtn.text = "Lanjut"
+                    binding.detailTaskUpload.visibility = View.GONE
                 }
             }
         }

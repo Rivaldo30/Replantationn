@@ -26,12 +26,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:textSize="16dp"
-            android:layout_margin="20dp"
-            android:textAlignment="center"
-            android:text="Apakah Anda ingin menyelesaikan laporan serah terima?"
+            android:id="@+id/message_conf_sterima"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Apakah Anda ingin menyelesaikan laporan serah terima?"
+            android:textAlignment="center"
+            android:textSize="16dp" />
 
     </LinearLayout>
 

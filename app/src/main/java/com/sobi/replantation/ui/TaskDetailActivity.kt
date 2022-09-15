@@ -3,21 +3,28 @@ package com.sobi.replantation.ui
 import android.Manifest
 import android.app.Activity
 import android.content.ContentValues
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Paint
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -37,6 +44,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -52,7 +61,10 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
     val REQUEST_CODE = 200
     var image_uri: Uri? = null
     private val RESULT_LOAD_IMAGE = 123
-    val IMAGE_CAPTURE_CODE = 654
+
+    var photoFile: File? = null
+    val CAPTURE_IMAGE_REQUEST = 123
+    var mCurrentPhotoPath: String? = null
 
 
     private lateinit var job: Job
@@ -124,7 +136,6 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         permission()
 
         launch {
-            vm.getTotalTerima(memberId)
             vm.loadDetail(memberId)
         }
 
@@ -134,7 +145,7 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         }
 
         binding.ambilFoto.setOnClickListener {
-            showPopUpPickPicture()
+            showPopUpSelectDokumentasi()
         }
 
         binding.finishSerahTerima.setOnClickListener {
@@ -151,6 +162,10 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
             startActivity(Intent(this, ListSerahTerimaActivity::class.java).apply {
                 putExtra(ListSerahTerimaActivity.paramMemberId, memberId)
             })
+        }
+
+        binding.showSerahTerima.setOnClickListener {
+            startActivity(Intent(this,DetailBuktiActivity::class.java ))
         }
 
 
@@ -176,6 +191,11 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         binding.tvCountAreas.text = "${assignment.areaCount}"
         binding.tvCountBibit.text = "${assignment.totalBibit.toString()}"
 
+        if (totalPhotos>0){
+            binding.showSerahTerima.visibility = View.VISIBLE
+        } else binding.showSerahTerima.visibility = View.GONE
+
+
         if (assignment.finishedSerahTerima==1){
             binding.addSerahTerima.backgroundTintList  = AppCompatResources.getColorStateList(this, R.color.grey)
             binding.addSerahTerima.isEnabled = false
@@ -186,12 +206,20 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
             binding.finishSerahTerima.text = "Batalkan Selesai\nSerah Terima"
             binding.finishSerahTerima.isEnabled = true
             binding.finishSerahTerima.setTextColor(Color.WHITE)
-    } else{
+    } else if(totalTerima >= totalBibit && totalPhotos > 0){
             binding.addSerahTerima.backgroundTintList  = AppCompatResources.getColorStateList(this, R.color.colorGreen)
             binding.addSerahTerima.isEnabled = true
+            binding.finishSerahTerima.setBackgroundResource(R.drawable.background_yellow)
+            binding.finishSerahTerima.text = "Selesaikan\nSerah Terima"
+            binding.finishSerahTerima.isEnabled = true
+            binding.finishSerahTerima.setTextColor(Color.WHITE)
             binding.ambilFoto.setBackgroundResource(R.drawable.background_red)
             binding.ambilFoto.setTextColor(Color.WHITE)
-            binding.ambilFoto.isEnabled = true
+            binding.ambilFoto.isEnabled = true}
+        else {
+            binding.finishSerahTerima.setBackgroundResource(R.drawable.background_nonaktif)
+            binding.finishSerahTerima.setTextColor(Color.GRAY)
+            binding.finishSerahTerima.isEnabled = false
         }
     }
 
@@ -199,7 +227,7 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         super.onResume()
         launch {
             vm.loadDetail(memberId)
-            vm.getTotalTerima(memberId)
+
         }
     }
 
@@ -213,16 +241,6 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         result ?: return
         totalTerima = result
         binding.tvCountTerima.text = result.toString()
-        if (totalTerima >= totalBibit && totalPhotos > 0
-        ) {
-            binding.finishSerahTerima.setBackgroundResource(R.drawable.background_yellow)
-            binding.finishSerahTerima.setTextColor(Color.WHITE)
-            binding.finishSerahTerima.isEnabled = true
-        } else {
-            binding.finishSerahTerima.setBackgroundResource(R.drawable.background_nonaktif)
-            binding.finishSerahTerima.setTextColor(Color.GRAY)
-            binding.finishSerahTerima.isEnabled = false
-        }
     }
 
     private fun showDokumentasi(result: List<BuktiSerahTerima>?) {
@@ -277,16 +295,21 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
 
         val view = layoutInflater.inflate(R.layout.alert_konfirmasi_layout, null)
         builder.setView(view)
+        val message = view.findViewById<TextView>(R.id.message_conf_sterima)
         val buttonOk = view.findViewById<Button>(R.id.btn_ok)
         val buttonNo = view.findViewById<Button>(R.id.btn_cancel)
 
-        buttonOk.setOnClickListener {
-            if (statusSerahTerima==1){
+        if (statusSerahTerima==1){
+            message.setText("Apakah Anda ingin membatalkan status selesai laporan serah terima?")
+            buttonOk.setOnClickListener {
                 launch {
                     vm.updateFinishedSerahTerima(0, memberId)
                 }
                 builder.dismiss()
-            } else{
+            }
+        } else{
+            message.setText("Apakah Anda ingin menyelesaikan laporan serah terima?")
+            buttonOk.setOnClickListener {
                 launch {
                     vm.updateFinishedSerahTerima(1, memberId)
                 }
@@ -294,14 +317,40 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
                 onBackPressed()
             }
 
+        }
 
+        buttonNo.setOnClickListener {
+            builder.dismiss()
         }
         builder.setCanceledOnTouchOutside(false)
         builder.show()
 
     }
 
-    fun showPopUpPickPicture() {
+    fun showPopUpSelectDokumentasi() {
+        val dialog = BottomSheetDialog(this, R.style.ButtomSheetDialogTheme)
+        val view = layoutInflater.inflate(R.layout.pop_up_select_dokumentasi, null)
+        dialog.setContentView(view)
+
+        val pickFormulir = view.findViewById<LinearLayout>(R.id.form)
+        val pickDokumentasi = view.findViewById<LinearLayout>(R.id.dokumentasi)
+
+        pickFormulir.setOnClickListener {
+            showPopUpPickPicture(1)
+
+        }
+        pickDokumentasi.setOnClickListener {
+            showPopUpPickPicture(2)
+
+        }
+
+
+
+
+        dialog.show()
+
+    }
+    fun showPopUpPickPicture(typeDokumen: Int) {
         val dialog = BottomSheetDialog(this, R.style.ButtomSheetDialogTheme)
         val view = layoutInflater.inflate(R.layout.pop_up_pick_picture, null)
         dialog.setContentView(view)
@@ -310,31 +359,12 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         val toCamera = view.findViewById<CardView>(R.id.toCamera)
 
         toGaleri.setOnClickListener {
-            val popupMenu = PopupMenu(this, it)
-            popupMenu.menuInflater.inflate(R.menu.menu, popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener { menu ->
-                when (menu.itemId){
-                    R.id.bukti -> openGalleryForImages()
-                    R.id.dokumen -> openGalleryForImages()
 
-                }
-                return@setOnMenuItemClickListener true
-            }
-            popupMenu.show()
 
         }
         toCamera.setOnClickListener {
-            val popupMenu = PopupMenu(this, it)
-            popupMenu.menuInflater.inflate(R.menu.menu, popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener { menu ->
-                when (menu.itemId){
-                    R.id.bukti -> openCamera()
-                    R.id.dokumen -> openCamera()
+            captureImage()
 
-                }
-                return@setOnMenuItemClickListener true
-            }
-            popupMenu.show()
         }
 
 
@@ -426,7 +456,10 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
 
             }
         }
-        else  if (requestCode == IMAGE_CAPTURE_CODE && resultCode == Activity.RESULT_OK) {
+        else  if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            val myBitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath)
+
+            Log.d("data", "xdcamera ${photoFile!!.absolutePath} $myBitmap")
             launch {
                 vm.saveImage(memberId)
             }
@@ -440,7 +473,73 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
-        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
+//        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
+
+
+    private fun captureImage() {
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                0
+            )
+        } else {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            if (takePictureIntent.resolveActivity(packageManager) != null) {
+
+                // Create the File where the photo should go
+
+                try {
+                    photoFile = createImageFile()
+                    // Continue only if the File was successfully created
+                    if (photoFile != null) {
+                        val photoURI = FileProvider.getUriForFile(
+                            this,
+                            "com.sobi.replantation",
+                            photoFile!!
+                        )
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                        startActivityForResult(takePictureIntent, CAPTURE_IMAGE_REQUEST)
+                    }
+                } catch (ex: Exception) {
+                    // Error occurred while creating the File
+                    displayMessage(baseContext, ex.message.toString())
+                }
+
+            } else {
+                displayMessage(baseContext, "Null")
+            }
+        }
+
+    }
+
+    @Throws(IOException::class)
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val imageFileName = "JPEG_" + timeStamp + "_"
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val image = File.createTempFile(
+            imageFileName, /* prefix */
+            ".jpg", /* suffix */
+            storageDir      /* directory */
+        )
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.absolutePath
+        return image
+    }
+
+    private fun displayMessage(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+
 
 }

@@ -373,6 +373,28 @@ data class BulkTreePengayaanResponseItem(
 //species
 data class SpeciesResponse(val status: Int, val message: String, val data: List<Species>)
 
+data class UploadSerahTerimaRequest(
+    @field:JsonProperty("member_id")
+    val memberId: Int,
+    @field:JsonProperty("replantation_id")
+    val replantationId: Int,
+    @field:JsonProperty("serah_terima")
+    val serahTerima: List<SerahTerimaItem>
+)
+
+data class SerahTerimaItem(
+    @field:JsonProperty("id")
+    val id: Int,
+    @field:JsonProperty("member_id")
+    val memberId: Int,
+    @field:JsonProperty("replantation_id")
+    val replantationId: Int,
+    @field:JsonProperty("species_id")
+    val speciesId: Int,
+    @field:JsonProperty("total_bibit")
+    val totalBibit : Int
+)
+
 
 
 

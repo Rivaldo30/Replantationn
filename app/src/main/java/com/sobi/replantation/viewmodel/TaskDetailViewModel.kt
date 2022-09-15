@@ -37,7 +37,7 @@ class TaskDetailViewModel @Inject constructor(
     val areaData = MutableLiveData<List<Area>>()
     val totalTerima = MutableLiveData<Int>()
 
-    fun loadDetail(memberId: Int) {
+    suspend fun loadDetail(memberId: Int) {
         val koperasiId = preferenceService.koperasiId
         GlobalScope.launch(Dispatchers.Main) {
             val result = async(Dispatchers.IO) {
@@ -57,16 +57,15 @@ class TaskDetailViewModel @Inject constructor(
             }.await()
             buktiDokumenData.value = photo
         }
-    }
-
-    suspend fun getTotalTerima(memberId: Int) {
-        val result = GlobalScope.async(Dispatchers.IO) {
+        val foto = GlobalScope.async(Dispatchers.IO) {
             assignmentInteractor.getTotalTerima(memberId)
         }.await()
         GlobalScope.launch(Dispatchers.Main) {
-            totalTerima.value = result
+            totalTerima.value = foto
         }
     }
+
+
 
     suspend fun saveSerahTerima(
         memberId: Int,
@@ -89,7 +88,9 @@ class TaskDetailViewModel @Inject constructor(
                 )
             )
         }
-        getTotalTerima(memberId)
+        GlobalScope.launch(Dispatchers.Main){
+            loadDetail(memberId)
+        }
     }
 
     suspend fun updateFinishedSerahTerima(update: Int, memberId: Int) {
@@ -97,13 +98,15 @@ class TaskDetailViewModel @Inject constructor(
         runBlocking(Dispatchers.IO) {
             assignmentInteractor.updateAssignment(data.copy(finishedSerahTerima = update))
         }
-        loadDetail(memberId)
+        GlobalScope.launch(Dispatchers.Main){
+            loadDetail(memberId)
+        }
     }
 
     suspend fun saveImage(memberId: Int){
         val accessId = preferenceService.accessId
         GlobalScope.async(Dispatchers.IO){
-            buktiSerahTerimaInteractor.saveSerahTerima(BuktiSerahTerima(1,accessId,memberId, "jdjdjjdj","25-08-2022",1  ))
+            buktiSerahTerimaInteractor.saveSerahTerima(BuktiSerahTerima(0,accessId,memberId, "ffdjjdj","25-08-2022",1  ))
         }
         GlobalScope.launch(Dispatchers.Main){
             loadDetail(memberId)

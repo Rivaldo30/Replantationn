@@ -191,10 +191,10 @@
                 app:backgroundTint="@color/colorGreen"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:src="@drawable/ic_add_white"
                 app:fabSize="normal" />
 
@@ -205,7 +205,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/ambil_foto"
                 android:background="@drawable/background_yellow"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Selesaikan\nSerah Terima"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite" />
@@ -216,10 +216,24 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toLeftOf="@id/add_serah_terima"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/show_serah_terima"
                 android:background="@drawable/background_red"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="Input\nDokumentasi"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/show_serah_terima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/add_serah_terima"
+                android:background="@drawable/background_teal"
+                android:padding="5dp"
+                android:text="Lihat\nDokumentasi"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite" />
 

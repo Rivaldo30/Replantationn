@@ -26,4 +26,11 @@ interface MemberApi {
         @Query("koperasi_id") koperasiId: Int
     ): Call<BulkDataResponse>
 
+    @POST("/v2/replantation/upload_serah_terima")
+    fun uploadSerahTeima(
+        @Header("Authorization") auth: String,
+        @Header("Sobi-Date") sobiDate: String,
+        @Body request: UniqueLoginRequest
+    ) : Call<Void>
+
 }

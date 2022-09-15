@@ -3,31 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable-v24/background_teal.xml" value="0.139" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable-v24/ic_arrow_back_black.xml" value="0.1785" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable-v24/ic_arrow_back_white.xml" value="0.109" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/back_down_dialog.xml" value="0.1485" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/background_blue.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/background_nonaktif.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/background_search.xml" value="0.1" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/background_white.xml" value="0.164" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_add_white.xml" value="0.179" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_camera.xml" value="0.1485" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_dokumentasi.xml" value="0.1" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_from.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_galeri.xml" value="0.1485" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/ic_refresh_white_24dp.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/drawable/list_area_background.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_area_detail.xml" value="0.2" />
-        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_detail_bukti.xml" value="0.1" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_detail_bukti.xml" value="0.22" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_list_serah_terima.xml" value="0.25" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_login.xml" value="0.14" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_member_detail.xml" value="0.16252821670428894" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_photo_view.xml" value="0.15625" />
-        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_task_detail.xml" value="0.5" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_task_detail.xml" value="0.21" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/activity_task_list.xml" value="0.15" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/alert_isian_serah_terima.xml" value="0.25" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/alert_konfirmasi_layout.xml" value="0.25" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/list_area.xml" value="0.15" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/list_serah_terima.xml" value="0.22" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/pop_up_input_pdf_layout.xml" value="0.2867647058823529" />
-        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/pop_up_pick_picture.xml" value="0.1" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/pop_up_pick_picture.xml" value="0.22" />
+        <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/pop_up_select_dokumentasi.xml" value="0.22" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/progressbar_layout.xml" value="0.33" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/layout/task_list_row.xml" value="0.1" />
         <entry key="..\:/SOBI Project/App_Replantation/app/src/main/res/menu/menu.xml" value="0.1" />
