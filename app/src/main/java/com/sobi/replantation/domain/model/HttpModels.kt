@@ -371,7 +371,10 @@ data class BulkTreePengayaanResponseItem(
 )
 
 //species
-data class SpeciesResponse(val status: Int, val message: String, val data: List<Species>)
+data class SpeciesResponse(
+    val status: Int,
+    val message: String,
+    val data: List<Species>)
 
 data class UploadSerahTerimaRequest(
     @field:JsonProperty("member_id")

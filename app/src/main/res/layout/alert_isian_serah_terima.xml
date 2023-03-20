@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     android:padding="10dp">
 
@@ -26,32 +27,57 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/background_spinner"
+                android:hint="Tambah data drop-down" />
+
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/background_green"
+                android:text="Tambah"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="2"
-               
+
                 android:text="Jenis Bibit"
                 android:textSize="14sp" />
 
-           <LinearLayout
-               android:background="@drawable/background_spinner"
+            <LinearLayout
+                android:layout_width="match_parent"
 
-               android:layout_weight="1"
-               android:layout_width="match_parent"
-               android:layout_height="40dp">
-               <Spinner
-                   android:padding="5dp"
-                   android:id="@+id/species"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   />
-           </LinearLayout>
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_spinner">
+
+                <Spinner
+                    android:id="@+id/spn_species"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -64,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-               
+
                 android:text="Jumlah"
                 android:textSize="14sp" />
 
@@ -73,10 +99,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:inputType="number"
                 android:background="@drawable/background_spinner"
-               
                 android:hint="0"
+
+                android:inputType="number"
                 android:padding="5dp"
                 android:textColor="#000" />
         </LinearLayout>
@@ -91,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-               
+
                 android:text="Keterangan"
                 android:textSize="14sp" />
 
@@ -104,6 +130,7 @@
                 android:minHeight="50dp"
                 android:padding="5dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,61 +145,62 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:text="jdkdk"
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/background_spinner"
+                android:gravity="center_vertical"
                 android:minHeight="50dp"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:text="jdkdk"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_warning"
-            android:textColor="@color/colorRed"
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorRed" />
 
     </LinearLayout>
 
-<LinearLayout
-    android:gravity="end"
-    android:layout_marginTop="10dp"
-    android:orientation="horizontal"
-    android:layout_below="@id/isian"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <Button
-       
-        android:id="@+id/btn_cancel"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/background_red"
-        android:text="Batal"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp" />
-    <Button
-       
-        android:layout_marginLeft="10dp"
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAllCaps="false"
-        android:background="@drawable/background_yellow"
-        android:text="Simpan"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp" />
+        android:layout_below="@id/isian"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <Button
+
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_red"
+            android:text="Batal"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+        <Button
+
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/background_yellow"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

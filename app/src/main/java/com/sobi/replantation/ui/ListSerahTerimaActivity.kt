@@ -2,7 +2,6 @@ package com.sobi.replantation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -19,7 +18,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -106,7 +104,7 @@ class ListSerahTerimaActivity : AppCompatActivity(), CoroutineScope {
             .create()
         val view = layoutInflater.inflate(R.layout.alert_isian_serah_terima, null)
         val button = view.findViewById<Button>(R.id.btn_save)
-        val spinner = view.findViewById<Spinner>(R.id.species)
+        val spinner = view.findViewById<Spinner>(R.id.spn_species)
         val date = view.findViewById<TextView>(R.id.date)
         val jumlah = view.findViewById<EditText>(R.id.jumlah_bibit)
         val keterangan = view.findViewById<EditText>(R.id.keterangan)

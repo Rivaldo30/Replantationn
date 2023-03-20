@@ -20,37 +20,104 @@
        android:orientation="vertical"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
-<TextView
-    android:text="Form Serah Terima"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
-       <ImageView
-           android:src="@drawable/bukti"
-           android:layout_width="120dp"
-           android:layout_height="120dp"/>
+            <TextView
+                android:text="Form Serah Terima"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+           <ImageView
+               android:id="@+id/formDokumentasi"
+               android:src="@drawable/ic_baseline_image"
+               android:layout_width="120dp"
+               android:layout_height="120dp"/>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="10dp"
+           android:gravity="center">
+
+           <com.google.android.material.floatingactionbutton.FloatingActionButton
+               android:id="@+id/ambil_file"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="10dp"
+               android:layout_marginStart="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginBottom="10dp"
+               android:src="@drawable/ic_baseline_photo_camera_24"
+               app:backgroundTint="@color/colorGreen"
+               app:fabSize="normal" />
+
+           <com.google.android.material.floatingactionbutton.FloatingActionButton
+               android:id="@+id/ambil_file_galeri"
+               android:layout_width="240dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginEnd="10dp"
+               android:layout_marginBottom="10dp"
+               android:src="@drawable/ic_baseline_insert_drive_file_24"
+               app:backgroundTint="@color/colorGreen"
+               app:fabSize="normal"/>
+
+       </LinearLayout>
+
 
        <TextView
            android:layout_marginTop="10dp"
-           android:text="Dokumentasi Serah Terima"
+           android:text="Foto Serah Terima"
+           android:textColor="@color/black"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"/>
 
        <LinearLayout
            android:orientation="horizontal"
-           android:layout_width="match_parent"
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content">
            <ImageView
-
-               android:src="@drawable/dokumentasi1"
-               android:layout_marginTop="10dp"
-               android:layout_width="120dp"
-               android:layout_height="120dp"/>
-           <ImageView
-               android:src="@drawable/dokumentasi2"
-               android:layout_marginTop="10dp"
+               android:id="@+id/fotoDokumentasi"
+               android:src="@drawable/ic_baseline_image"
                android:layout_width="120dp"
                android:layout_height="120dp"/>
        </LinearLayout>
 
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="10dp"
+           android:gravity="center">
+
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/ambil_foto"
+           android:layout_width="240dp"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginTop="10dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           android:layout_marginBottom="10dp"
+           android:src="@drawable/ic_baseline_photo_camera_24"
+           app:backgroundTint="@color/colorGreen"
+           app:fabSize="normal" />
+
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/ambil_foto_galeri"
+           android:layout_width="240dp"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginStart="10dp"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="10dp"
+           android:layout_marginBottom="10dp"
+           android:src="@drawable/ic_baseline_photo_24"
+           app:backgroundTint="@color/colorGreen"
+           app:fabSize="normal"/>
+
+       </LinearLayout>
    </LinearLayout>
 </LinearLayout>

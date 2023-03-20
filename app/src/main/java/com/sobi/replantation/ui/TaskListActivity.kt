@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -110,6 +111,10 @@ class TaskListActivity : AppCompatActivity(), CoroutineScope {
         taskListAdapter.notifyDataSetChanged()
     }
 
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_edit_item, menu)
+//    }
+
     override fun onResume() {
         super.onResume()
         launch {
@@ -117,7 +122,7 @@ class TaskListActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-     fun popUpPdf() {
+    fun popUpPdf() {
 
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
             .create()
@@ -133,18 +138,18 @@ class TaskListActivity : AppCompatActivity(), CoroutineScope {
         builder.setCanceledOnTouchOutside(false)
         builder.show()
 
+        buttonNo.setOnClickListener {
+            builder.dismiss()
+        }
     }
 
 
     fun goToDetailMember(memberId : Int, memberName : String){
 
-       val intent = Intent(this, TaskDetailActivity::class.java)
-            intent.putExtra(TaskDetailActivity.paramMemberName, memberName)
-            intent.putExtra(TaskDetailActivity.paramMemberId, memberId)
+        val intent = Intent(this, TaskDetailActivity::class.java)
+        intent.putExtra(TaskDetailActivity.paramMemberName, memberName)
+        intent.putExtra(TaskDetailActivity.paramMemberId, memberId)
         Log.d("member","id = $memberId")
         startActivity(intent)
     }
-
-
-
 }

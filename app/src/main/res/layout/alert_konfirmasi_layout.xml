@@ -37,15 +37,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="end"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/isian"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/isian"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:orientation="horizontal">
 
         <Button
-
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,16 +54,16 @@
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
-        <Button
 
-            android:layout_marginLeft="10dp"
+        <Button
             android:id="@+id/btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAllCaps="false"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/background_yellow"
             android:text="Ya"
+            android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
 

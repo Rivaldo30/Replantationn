@@ -36,6 +36,7 @@ import com.sobi.replantation.databinding.ActivityTaskDetailBinding
 import com.sobi.replantation.domain.model.Area
 import com.sobi.replantation.domain.model.Assignment
 import com.sobi.replantation.domain.model.BuktiSerahTerima
+import com.sobi.replantation.domain.model.Species
 import com.sobi.replantation.viewmodel.TaskDetailViewModel
 import com.sobi.replantation.viewmodel.TaskListViewModel
 import com.squareup.picasso.Picasso
@@ -93,7 +94,11 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
 
     lateinit var areaListAdapter: AreaListAdapter
 
-    val logConditionList = listOf("Sengon", "Mahoni", "Jati")
+//    var speciesList = listOf<Species>()
+    var logConditionList = arrayOf("Jati", "Mahoni", "Sengon")
+
+    private var specieschoice: Int? = null
+    var list = ArrayList(Arrays.asList(*logConditionList))
 
     val dateFormat = SimpleDateFormat("dd-MM-yyyy")
 
@@ -105,6 +110,10 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         setContentView(binding.root)
         memberId = intent.getIntExtra(paramMemberId, 0)
         memberName = intent.getStringExtra(paramMemberName) ?: ""
+
+        val view = layoutInflater.inflate(R.layout.alert_isian_serah_terima, null)
+        val spinner = view.findViewById<Spinner>(R.id.spn_species)
+
 
         Log.d("member", "ids= $memberId")
         job = Job()
@@ -132,6 +141,11 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         vm.areaData.observe(this, Observer(::updateAreaDetails))
         vm.totalTerima.observe(this, Observer(::showTerima))
         vm.buktiDokumenData.observe(this, Observer(::showDokumentasi))
+//        vm.speciesListData.observe(this, Observer(::onInitFormData))
+//        launch {
+//            vm.initFormData()
+//        }
+
 
         permission()
 
@@ -144,9 +158,16 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
             showSerahTerimaPopUp()
         }
 
-        binding.ambilFoto.setOnClickListener {
-            showPopUpSelectDokumentasi()
+
+        val button = findViewById<Button>(R.id.ambil_foto)
+        button.setOnClickListener {
+            startActivity(Intent(this@TaskDetailActivity, DetailBuktiActivity::class.java))
         }
+
+
+//        binding.ambilFoto.setOnClickListener {
+//            showPopUpSelectDokumentasi()
+//        }
 
         binding.finishSerahTerima.setOnClickListener {
             finishSerahTerimaPopUp()
@@ -171,6 +192,47 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
 
     }
 
+
+//    private fun onInitFormData(speciesList: List<Species>?) {
+//        val view = layoutInflater.inflate(R.layout.alert_isian_serah_terima, null)
+//        val spinner = view.findViewById<Spinner>(R.id.spn_species)
+//        val date = view.findViewById<TextView>(R.id.date)
+//        date.text = dateFormat.format(Date(System.currentTimeMillis()))
+//
+//        this.speciesList = speciesList?.sortedWith(compareBy {
+//            it.id
+//        }) ?: listOf()
+//        val list = mutableListOf<String>()
+//        list.addAll(this.speciesList.mapNotNull {
+//            it.name
+//        })
+//        Log.d("mutable","list $list")
+//        val adapter =
+//            ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, list)
+//        spinner.adapter = adapter
+//        adapter.notifyDataSetChanged()
+//
+//        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?, view: View?, position: Int, id: Long
+//            ) {
+//                val species = this@TaskDetailActivity.speciesList
+//                val current = parent?.getItemAtPosition(position) as String
+//                Log.d("specie","haak $current")
+//                val curDbId = species.firstOrNull() { entry -> entry.name == current }?.id
+//                specieschoice = curDbId ?: 0
+//
+//            }
+//        }
+//
+//    }
+
+
+
     private fun updateDetail(assignment: Assignment?) {
         if (assignment == null) return
 
@@ -189,11 +251,11 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         binding.tvNameMember.text = assignment.memberName
         binding.tvNumberMember.text = assignment.memberNo
         binding.tvCountAreas.text = "${assignment.areaCount}"
-        binding.tvCountBibit.text = "${assignment.totalBibit.toString()}"
+        binding.tvCountBibit.text = assignment.totalBibit.toString()
 
-        if (totalPhotos>0){
-            binding.showSerahTerima.visibility = View.VISIBLE
-        } else binding.showSerahTerima.visibility = View.GONE
+//        if (totalPhotos>0){
+//            binding.showSerahTerima.visibility = View.VISIBLE
+//        } else binding.showSerahTerima.visibility = View.GONE
 
 
         if (assignment.finishedSerahTerima==1){
@@ -248,25 +310,43 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         totalPhotos = result.size
     }
 
+
     private fun showSerahTerimaPopUp() {
+        val adaptor = ArrayAdapter(
+            this,
+            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+            list
+        )
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
             .create()
         val view = layoutInflater.inflate(R.layout.alert_isian_serah_terima, null)
-        val button = view.findViewById<Button>(R.id.btn_save)
-        val spinner = view.findViewById<Spinner>(R.id.species)
+        val buttonSave = view.findViewById<Button>(R.id.btn_save)
+        val spinner = view.findViewById<Spinner>(R.id.spn_species)
         val date = view.findViewById<TextView>(R.id.date)
         date.text = dateFormat.format(Date(System.currentTimeMillis()))
         val jumlah = view.findViewById<EditText>(R.id.jumlah_bibit)
         val keterangan = view.findViewById<EditText>(R.id.keterangan)
         val warning = view.findViewById<TextView>(R.id.tv_warning)
+        val editTextspinner = view.findViewById<EditText>(R.id.editText)
+        val buttonTambah = view.findViewById<Button>(R.id.buttonAdd)
 
+
+        spinner!!.adapter = adaptor
+
+        buttonTambah!!.setOnClickListener {
+            val s = editTextspinner!!.text.toString()
+            list.add(s)
+            adaptor.notifyDataSetChanged()
+            spinner!!.adapter = adaptor
+            Toast.makeText(applicationContext, "Item added to spinner", Toast.LENGTH_LONG).show()
+        }
 
             val adapter =
                 ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, logConditionList)
             spinner.adapter = adapter
 
         builder.setView(view)
-        button.setOnClickListener {
+        buttonSave.setOnClickListener {
            if (jumlah.text.toString()==null||jumlah.text.toString().isEmpty()){
                warning.text = "Mohon isi jumlah bibitnya"
            }else{
@@ -298,6 +378,8 @@ class TaskDetailActivity : AppCompatActivity(), CoroutineScope {
         val message = view.findViewById<TextView>(R.id.message_conf_sterima)
         val buttonOk = view.findViewById<Button>(R.id.btn_ok)
         val buttonNo = view.findViewById<Button>(R.id.btn_cancel)
+
+
 
         if (statusSerahTerima==1){
             message.setText("Apakah Anda ingin membatalkan status selesai laporan serah terima?")

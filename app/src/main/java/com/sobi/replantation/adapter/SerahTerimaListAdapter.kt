@@ -33,7 +33,8 @@ class SerahTerimaListAdapter(val context: Context) : RecyclerView.Adapter<SerahT
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
        with(holder){
            with(serahTerimas[position]){
-               binding.species.text = if (this.speciesId==1) "Mahoni" else if(this.speciesId==2) "Jati" else "Sengon"
+               binding.spnSpecies.text = this.speciesId.toString()
+               //binding.spnSpecies.text = if (this.speciesId==1) "Mahoni" else if(this.speciesId==2) "Jati" else "Sengon"
                binding.jumlahBibit.text = "Jumlah Bibit : ${this.totalBibit}"
                binding.detailTree.setOnClickListener {
                    (context as ListSerahTerimaActivity).editSerahTerima(this.id)

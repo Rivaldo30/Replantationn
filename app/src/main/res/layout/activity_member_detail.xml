@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/img_photo_member"
-                    android:src="@drawable/avatar"
+                    android:src="@drawable/ic_baseline_account"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/img_photo_idcard"
-                    android:src="@drawable/avatar"
+                    android:src="@drawable/ic_baseline_account"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/img_photo_membership"
-                    android:src="@drawable/avatar"
+                    android:src="@drawable/ic_baseline_account"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/img_photo_desc"
-                    android:src="@drawable/avatar"
+                    android:src="@drawable/ic_baseline_account"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"/>
 

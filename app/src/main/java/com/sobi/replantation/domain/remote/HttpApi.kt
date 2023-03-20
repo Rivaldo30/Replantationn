@@ -33,4 +33,11 @@ interface MemberApi {
         @Body request: UniqueLoginRequest
     ) : Call<Void>
 
+    @POST("/v2/replantation/upload_dokumentasi_serah_terima")
+    fun uploadImageSerahTeima(
+        @Header("Authorization") auth: String,
+        @Header("Sobi-Date") sobiDate: String,
+        @Body request: UniqueLoginRequest
+    ) : Call<Void>
+
 }
